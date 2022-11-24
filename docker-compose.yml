@@ -9,6 +9,6 @@ services:
             - ./download:/download
 #            - ./:/app
             - ./list.csv:/list.csv
-        environment:
-            FORMAT: mp4
+#        environment:
+#            FORMAT: mp4
         restart: always    
