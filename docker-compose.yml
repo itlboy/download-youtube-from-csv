@@ -1,0 +1,10 @@
+version: "3.7"
+services:
+    node-youtube-dl:
+        build:
+          context: .
+          dockerfile: Dockerfile
+        volumes:
+            - ./download:/download
+            - ./:/app
+        restart: always    
