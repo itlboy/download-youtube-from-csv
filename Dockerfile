@@ -4,6 +4,7 @@ WORKDIR /app
 COPY package*.json .
 RUN npm install
 COPY . .
+COPY ./list.csv /list.csv
 
 ENTRYPOINT ["/bin/bash", "-c"]
 CMD  ["node index.js"];

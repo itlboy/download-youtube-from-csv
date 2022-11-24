@@ -1,7 +1,7 @@
 const parse = require('csv-parse/sync').parse;
 const fs = require("fs");
 const {spawn} = require('node:child_process');
-const csv = "./list.csv";
+const csv = "/list.csv";
 
 const data = fs.readFileSync(csv, {encoding: 'utf8', flag: 'r'});
 
@@ -33,7 +33,15 @@ var processUrl = async(key, url) => {
 
     return new Promise((resolve, reject) => {
         console.log(`PROCESS URL: ${url}`)
-        const cmd = spawn('yt-dlp', ["-f", "mp4", "-o", "%(upload_date)s-%(title)s.%(ext)s", url]);
+        
+        var cmd;
+        if(process.env.FORMAT) {
+            cmd = spawn('yt-dlp', ["-f", process.env.FORMAT , "-o", "%(upload_date)s-%(title)s.%(ext)s", url]);
+        }
+        else {
+            cmd = spawn('yt-dlp', ["-o", "%(upload_date)s-%(title)s.%(ext)s", url]);
+        }
+        
         cmd.stdout.pipe(process.stdout)
 
 //        cmd.stdout.on('data', (data) => {
