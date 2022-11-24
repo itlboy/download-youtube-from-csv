@@ -2,9 +2,9 @@ version: "3.7"
 services:
     node-youtube-dl:
         image: itlboy/youtube-dl-from-csv
-        build:
-          context: .
-          dockerfile: Dockerfile
+#        build:
+#          context: .
+#          dockerfile: Dockerfile
         volumes:
             - ./download:/download
 #            - ./:/app
